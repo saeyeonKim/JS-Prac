@@ -75,6 +75,7 @@ nav {
   .nav-active {
     transform: translateX(0%);
   }
+  /* burger 눌렀을 떄 nav-links 애니메이션 */
   @keyframes navLinkFade {
     from {
       opacity: 0;
