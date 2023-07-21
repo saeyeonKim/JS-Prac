@@ -2,14 +2,66 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Color Flipper</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        gap: 15px;
+      }
+      #box1 {
+        width: 200px;
+        height: 50px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        border-radius: 10px;
+      }
+      #btn {
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: transparent;
+      }
+    </style>
   </head>
   <body>
-    <h1>background color : <span class="color">#123456</span></h1>
-    <button class="btn" id="btn">click me</button>
-    <script src="app.js"></script>
+    <div id="box1">Background Color : <span id="colname">White</span></div>
+    <button
+      class="btn"
+      id="btn"
+      onclick="changeColor()"
+    >
+      CLICK ME
+    </button>
+    <script>
+      const colorList = [
+        'white',
+        'red',
+        'blue',
+        'yellow',
+        'green',
+        'purple',
+        'grey',
+      ];
+      const changeColor = () => {
+        const col = colorList[Math.floor(Math.random() * colorList.length)];
+        document.getElementsByTagName('body')[0].style.background = col;
+        document.getElementById('colname').innerText = col;
+      };
+    </script>
   </body>
 </html>
