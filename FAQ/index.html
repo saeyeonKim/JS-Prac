@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f8;
+        }
+        #top {
+            width: 100%;
+            height: 30vh;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #top h1 {
+            color: #cfb284;
+            font-size: 45px;
+        }
+        #main {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+        }
+        .box {
+            background-color: #ffffff;
+            width: 600px;
+            margin-top: 30px;
+            position: relative;
+            border-radius: 20px;
+        }
+        .box h2 {
+            padding: 20px;
+        }
+        .box h2 button {
+            margin-left: 10px;
+            background-color: transparent;
+            border: 2px solid black;
+            font-size: 20px;
+            position: absolute;
+            right: 20px;
+            top: 21px;
+            transition: all 1s;
+            width: 30px;
+            height: 30px;
+        }
+        .box h2 button:hover {
+            transform: rotate(90deg);
+        }
+        .box div {
+            margin: 0 20px;
+            padding: 20px 0;
+            border-top: 1px solid black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <h1>General Questions</h1>
+    </div>
+    <div id="main">
+        <div>
+        <div class="box">
+            <h2>Q1. 이름이 뭐에요?<button onclick="answerHandler(event)">+</button></h2>
+            <div> 김세연입니다.</div>
+        </div>
+        <div class="box">
+            <h2>Q2. 이름이 뭐에요?<button onclick="answerHandler(event)">+</button></h2>
+            <div> 김세연입니다.</div>
+        </div>
+        <div class="box">
+            <h2>Q3. 이름이 뭐에요?<button onclick="answerHandler(event)">+</button></h2>
+            <div> 김세연입니다.</div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const answerHandler = (event) => {
+            const answer = event.target.parentElement.parentElement.children[1]
+            if (answer.style.display == 'block') {
+                answer.style.display='none'
+                event.target.innerText = '+'
+            } else {
+                answer.style.display='block'
+                event.target.innerText = '-'
+            }
+        }
+    </script>
+</body>
+</html>
