@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Background</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+      #content {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.609);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #content h1 {
+        font-size: 60px;
+        color: #ffffff;
+        margin-top: 0;
+        font-weight: bold;
+      }
+      #btnBox {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        border: 2px solid #4c7fb6;
+        background-color: #ffffff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #btnBox button {
+        background-color: transparent;
+        border: none;
+        width: 80px;
+        height: 40px;
+        color: #4c7fb6;
+        font-weight: bold;
+      }
+      #btnBox .active {
+        background-color: #4c7fb6;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <video src="1.mp4" oncanplay="videoPlay()"></video>
+    <div id="content">
+      <h1>Video Project</h1>
+      <div id="btnBox">
+        <button class="active" onclick="videoPlay()">PLAY</button>
+        <button onclick="videoPause()">PAUSE</button>
+      </div>
+    </div>
+    <script>
+      const videoPlay = () => {
+        const videoTag = document.getElementsByTagName('video')[0];
+        videoTag.muted = true;
+        videoTag.play();
+        document.getElementById('btnBox').children[1].setAttribute('class', '');
+        document.getElementById('btnBox').children[0].setAttribute('class', 'active');
+      };
+      const videoPause = () => {
+        const videoTag = document.getElementsByTagName('video')[0];
+        videoTag.pause();
+        document.getElementById('btnBox').children[0].setAttribute('class', '');
+        document.getElementById('btnBox').children[1].setAttribute('class', 'active');
+      };
+    </script>
+  </body>
+</html>
