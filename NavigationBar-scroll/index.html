@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>NavigationBar-Scroll</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        position: relative;
+      }
+      header {
+        width: 100vw;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        background-color: #ffffff;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+      header ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+      header ul li {
+        font-size: 30px;
+      }
+      header ul li a {
+        text-decoration: none;
+        color: #000000;
+      }
+      #content {
+        margin-top: 100px;
+        width: 100%;
+      }
+      #content1 {
+        width: 100%;
+        background-color: beige;
+        height: 1000px;
+      }
+      #content2 {
+        width: 100%;
+        background-color: rgb(187, 187, 73);
+        height: 1000px;
+      }
+      #content3 {
+        width: 100%;
+        background-color: rgb(114, 184, 217);
+        height: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li onclick="clickmenu('content1')">메뉴1</li>
+        <li onclick="clickmenu('content2')">메뉴2</li>
+        <li onclick="clickmenu('content3')">메뉴3</li>
+      </ul>
+    </header>
+    <div id="content">
+      <div id="content1">내용1</div>
+      <div id="content2">내용2</div>
+      <div id="content3">내용3</div>
+    </div>
+    <script>
+      const clickmenu = (id) => {
+        const getBounding = document
+          .getElementById(id)
+          //getBoundingClientRect : 엘리먼트의 페이지 위치 알아내기
+          //           bottom: 1100
+          // height: 1000
+          // left: 0
+          // right: 2378.75
+          // top: 100
+          // width: 2378.75
+          // x: 0
+          // y: 100
+          .getBoundingClientRect().y;
+        window.scrollTo(0, getBounding + window.scrollY - 100);
+
+        // setInterval : 정해진 시간마다 반복, setTimeout: 정해진 시간 후에 실행
+        // window.scrollTo(0, 0);
+        // let count = 0;
+
+        // let intervalId = setInterval(() => {
+        //   if (count == 1000) {
+        //     clearInterval(intervalId);
+        //   }
+        //   window.scrollTo(0, count);
+        //   count += 5;
+        // }, 0.5);
+      };
+    </script>
+  </body>
+</html>
