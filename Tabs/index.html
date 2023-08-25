@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Tabs</title>
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      #container {
+        width: 1200px;
+        height: 800px;
+      }
+      #btns {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        border: 1px solid black;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+        border-bottom: 0;
+      }
+      .btn {
+        height: 100%;
+        box-sizing: border-box;
+        width: 400px;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+      .btn:last-child {
+        border-right: 0;
+      }
+      .activebtn {
+        border-bottom: 0;
+        background-color: #ffbfbf;
+      }
+      #contents {
+        width: 100%;
+        height: 800px;
+        overflow: hidden;
+      }
+      .content {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+      .content:first-child {
+        background-color: aliceblue;
+        width: 100%;
+        height: 100%;
+      }
+      .content:nth-child(2) {
+        background-color: rgb(225, 156, 66);
+        width: 100%;
+        height: 100%;
+      }
+      .content:last-child {
+        background-color: rgb(71, 144, 208);
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="btns">
+        <div
+          class="btn activebtn"
+          onclick="clickbtn(1)"
+        >
+          1
+        </div>
+        <div
+          class="btn"
+          onclick="clickbtn(2)"
+        >
+          2
+        </div>
+        <div
+          class="btn"
+          onclick="clickbtn(3)"
+        >
+          3
+        </div>
+      </div>
+      <div id="contents">
+        <div class="content active">1Content</div>
+        <div class="content">2Content</div>
+        <div class="content">3Content</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const clickbtn = (option) => {
+      const element = document.getElementById('contents').children;
+      const btn = document.getElementById('btns').children;
+      if (option === 2) {
+        element[0].classList.remove('active');
+        element[2].classList.remove('active');
+        element[1].classList.add('active');
+        btn[0].classList.remove('activebtn');
+        btn[1].classList.add('activebtn');
+        btn[2].classList.remove('activebtn');
+      } else if (option === 3) {
+        element[0].classList.remove('active');
+        element[2].classList.add('active');
+        element[1].classList.remove('active');
+        btn[0].classList.remove('activebtn');
+        btn[1].classList.remove('activebtn');
+        btn[2].classList.add('activebtn');
+      } else {
+        element[0].classList.add('active');
+        element[2].classList.remove('active');
+        element[1].classList.remove('active');
+        btn[0].classList.add('activebtn');
+        btn[1].classList.remove('activebtn');
+        btn[2].classList.remove('activebtn');
+      }
+    };
+  </script>
+</html>
