@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Countdown Clock</title>
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+      #container {
+        border: 1px solid black;
+        width: 800px;
+        height: 800px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+      }
+      #name {
+        font-size: 70px;
+        margin-bottom: 30px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        color: white;
+      }
+      #boxes {
+        border: 1px solid black;
+        height: 300px;
+        width: 600px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+      .box div {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="name">Until Chirstmas Eve</div>
+      <div id="boxes">
+        <div class="box">
+          <p>DAYS</p>
+          <div id="days">0</div>
+        </div>
+        <div class="box">
+          <p>HOURS</p>
+          <div id="hours">0</div>
+        </div>
+        <div class="box">
+          <p>MINS</p>
+          <div id="mins">0</div>
+        </div>
+        <div class="box">
+          <p>SECS</p>
+          <div id="secs">0</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    setInterval(() => {
+      const now = new Date().getTime();
+      const target = new Date('2023-12-24').getTime();
+      let temp = (target - now) / 1000 - 9 * 60 * 60;
+      const days = Math.floor(temp / (60 * 60 * 24));
+      temp = temp % (60 * 60 * 24);
+      const hours = Math.floor(temp / (60 * 60));
+      temp = temp % (60 * 60);
+      const mins = Math.floor(temp / 60);
+      temp = temp % 60;
+      const secs = Math.floor(temp);
+
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours;
+      document.getElementById('mins').innerText = mins;
+      document.getElementById('secs').innerText = secs;
+    }, 1000);
+  </script>
+</html>
